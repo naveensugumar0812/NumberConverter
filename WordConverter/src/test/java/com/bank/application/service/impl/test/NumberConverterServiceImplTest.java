@@ -26,4 +26,10 @@ public class NumberConverterServiceImplTest {
 	public void testNegativeValue() {
 		converterService.convertNumToWord("-21312");
 	} 
+	
+	@Test(expected=NumberFormatException.class)
+	public void testMinimumValue() {
+		converterService.convertNumToWord("0");
+		
+	}
 }
