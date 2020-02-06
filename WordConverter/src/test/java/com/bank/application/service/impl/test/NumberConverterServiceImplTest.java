@@ -41,4 +41,9 @@ public class NumberConverterServiceImplTest {
 	public void testForAlphabet() {
 		converterService.convertNumToWord("asdasd");
 	}
+	
+	@Test(expected=NumberFormatException.class)
+	public void testForWithSpace() {
+		converterService.convertNumToWord("1 3 4");
+	}
 }
