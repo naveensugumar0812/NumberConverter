@@ -21,7 +21,7 @@ public class NumberConverterServiceImpl implements NumberConverterService {
 	public String convertNumToWord(String value) throws NumberFormatException  {
 		StringBuilder wordConvertorString = new StringBuilder();
 		int number = Integer.parseInt(value);
-		if(number <= 0) {
+		if(number <= 0 || number > 999999) {
 			throw new NumberFormatException(ServiceConstants.INVALID_NUMBER);
 		}
 

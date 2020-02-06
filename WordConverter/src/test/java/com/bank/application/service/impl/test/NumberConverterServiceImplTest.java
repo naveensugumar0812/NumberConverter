@@ -30,6 +30,10 @@ public class NumberConverterServiceImplTest {
 	@Test(expected=NumberFormatException.class)
 	public void testMinimumValue() {
 		converterService.convertNumToWord("0");
-		
+	}
+	
+	@Test(expected=NumberFormatException.class)
+	public void testExceedMaxValue() {
+		converterService.convertNumToWord("1000000");
 	}
 }
