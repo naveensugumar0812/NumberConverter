@@ -72,5 +72,14 @@ public class NumberConverterServiceImplTest {
 		
 	}
 	
+	@Test
+	public void testForValueAboveThousand() {
+		assertEquals("ONE THOUSAND", converterService.convertNumToWord("1000").trim());
+		assertEquals("ONE THOUSAND NINE HUNDRED AND NINETY EIGHT", converterService.convertNumToWord("1998").trim());
+		assertEquals("NINE THOUSAND NINE HUNDRED AND NINETY NINE", converterService.convertNumToWord("9999").trim());
+		
+	}
+	
+	
 	
 }
