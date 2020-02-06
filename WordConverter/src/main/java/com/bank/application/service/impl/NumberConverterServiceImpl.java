@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.bank.application.service.NumberConverterService;
 import com.bank.application.util.ServiceConstants;
+import com.bank.application.util.WordConvertorForOnes;
+import com.bank.application.util.WordConvertorForTens;
 
 /**
  * @author NaveenSugumar
@@ -23,6 +25,7 @@ public class NumberConverterServiceImpl implements NumberConverterService {
 		try {
 			int number = Integer.parseInt(value);
 			checkMinMaxNumber(number);
+			wordConvertor((number % 100), ServiceConstants.EMPTY,wordConvertorString);
 		} catch (Exception e) {
 			throw new NumberFormatException(ServiceConstants.INVALID_NUMBER);
 		}
@@ -34,6 +37,34 @@ public class NumberConverterServiceImpl implements NumberConverterService {
 			throw new NumberFormatException(ServiceConstants.INVALID_NUMBER);
 		} else if(number > 999999) {
 			throw new NumberFormatException(ServiceConstants.INVALID_NUMBER);
+		}
+	}
+
+	private void wordConvertor(int number, String numberCount,StringBuilder wordConvertorString) {
+		LOGGER.info("wordConvertor:: Number: "+number);
+		if(number > 19) {
+			int tensIndex = number/10;
+			int onesIndex = number%10;
+
+			if(tensIndex != 0 || tensIndex != 1) {
+				wordConvertorString.append(WordConvertorForTens.getType(String.valueOf(tensIndex)));
+				wordConvertorString.append(ServiceConstants.EMPTY);
+			}
+
+			if(onesIndex != 0) {
+				wordConvertorString.append(WordConvertorForOnes.getType(String.valueOf(onesIndex)));
+				wordConvertorString.append(ServiceConstants.EMPTY);
+			}
+		} else {
+			if(number > 0) {
+				wordConvertorString.append(WordConvertorForOnes.getType(String.valueOf(number)));
+				wordConvertorString.append(ServiceConstants.EMPTY);
+			}
+
+		}
+
+		if(number > 0) {
+			wordConvertorString.append(numberCount);
 		}
 	}
 }

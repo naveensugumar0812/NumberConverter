@@ -1,5 +1,7 @@
 package com.bank.application.service.impl.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -51,4 +53,15 @@ public class NumberConverterServiceImplTest {
 	public void testForFloat() {
 		converterService.convertNumToWord("1.5");
 	}
+	
+	@Test
+	public void testForValueBelowHundred() {
+		assertEquals("NINETY NINE", converterService.convertNumToWord("99").trim());
+		assertEquals("ONE", converterService.convertNumToWord("1").trim());
+		assertEquals("TWELVE", converterService.convertNumToWord("12").trim());
+		assertEquals("THIRTY", converterService.convertNumToWord("30").trim());
+		assertEquals("TEN", converterService.convertNumToWord("10").trim());
+	}
+	
+	
 }
