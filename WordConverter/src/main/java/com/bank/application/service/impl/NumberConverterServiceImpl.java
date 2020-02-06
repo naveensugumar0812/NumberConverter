@@ -25,6 +25,10 @@ public class NumberConverterServiceImpl implements NumberConverterService {
 		try {
 			int number = Integer.parseInt(value);
 			checkMinMaxNumber(number);
+			wordConvertor(((number / 100) % 10), ServiceConstants.HUNDRED+ServiceConstants.EMPTY,wordConvertorString);
+			if((number > 100) && ((number % 100) > 0)) {
+				wordConvertorString.append(ServiceConstants.AND+ServiceConstants.EMPTY);
+			}
 			wordConvertor((number % 100), ServiceConstants.EMPTY,wordConvertorString);
 		} catch (Exception e) {
 			throw new NumberFormatException(ServiceConstants.INVALID_NUMBER);

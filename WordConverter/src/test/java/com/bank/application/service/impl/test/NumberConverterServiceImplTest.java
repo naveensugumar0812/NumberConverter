@@ -63,5 +63,14 @@ public class NumberConverterServiceImplTest {
 		assertEquals("TEN", converterService.convertNumToWord("10").trim());
 	}
 	
+	@Test
+	public void testForValueAboveHundred() {
+		assertEquals("ONE HUNDRED", converterService.convertNumToWord("100").trim());
+		assertEquals("ONE HUNDRED AND ONE", converterService.convertNumToWord("101").trim());
+		assertEquals("NINE HUNDRED AND NINETY NINE", converterService.convertNumToWord("999").trim());
+		assertEquals("SEVEN HUNDRED AND EIGHTY NINE", converterService.convertNumToWord("789").trim());
+		
+	}
+	
 	
 }
