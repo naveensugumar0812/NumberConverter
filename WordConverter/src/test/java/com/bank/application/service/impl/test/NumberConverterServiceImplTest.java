@@ -46,4 +46,9 @@ public class NumberConverterServiceImplTest {
 	public void testForWithSpace() {
 		converterService.convertNumToWord("1 3 4");
 	}
+	
+	@Test(expected=NumberFormatException.class)
+	public void testForFloat() {
+		converterService.convertNumToWord("1.5");
+	}
 }
