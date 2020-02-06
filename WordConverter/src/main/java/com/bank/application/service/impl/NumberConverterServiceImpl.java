@@ -24,7 +24,9 @@ public class NumberConverterServiceImpl implements NumberConverterService {
 		StringBuilder wordConvertorString = new StringBuilder();
 		try {
 			int number = Integer.parseInt(value);
+			LOGGER.info("wordConvertor:: Whole Number: "+number);
 			checkMinMaxNumber(number);
+			wordConvertor(((number / 100000) % 100), ServiceConstants.LAKH+ServiceConstants.EMPTY,wordConvertorString);
 			wordConvertor(((number / 1000) % 100), ServiceConstants.THOUSAND +ServiceConstants.EMPTY,wordConvertorString);
 			wordConvertor(((number / 100) % 10), ServiceConstants.HUNDRED+ServiceConstants.EMPTY,wordConvertorString);
 			if((number > 100) && ((number % 100) > 0)) {

@@ -77,9 +77,19 @@ public class NumberConverterServiceImplTest {
 		assertEquals("ONE THOUSAND", converterService.convertNumToWord("1000").trim());
 		assertEquals("ONE THOUSAND NINE HUNDRED AND NINETY EIGHT", converterService.convertNumToWord("1998").trim());
 		assertEquals("NINE THOUSAND NINE HUNDRED AND NINETY NINE", converterService.convertNumToWord("9999").trim());
+		assertEquals("NINETY NINE THOUSAND NINE HUNDRED AND NINETY NINE", converterService.convertNumToWord("99999").trim());
+		assertEquals("TWENTY THREE THOUSAND FOUR HUNDRED AND FIFTY SIX", converterService.convertNumToWord("23456").trim());
 		
 	}
 	
-	
+	@Test
+	public void testForValueAboveLakh() {
+		assertEquals("NINE LAKH NINETY NINE THOUSAND NINE HUNDRED AND NINETY EIGHT", converterService.convertNumToWord("999998").trim());
+		assertEquals("NINE LAKH NINETY NINE THOUSAND NINE HUNDRED AND NINETY NINE", converterService.convertNumToWord("999999").trim());
+		assertEquals("FOUR LAKH FIFTY THOUSAND AND SIXTY SEVEN", converterService.convertNumToWord("450067").trim());
+		assertEquals("ONE LAKH AND ONE", converterService.convertNumToWord("100001").trim());
+		assertEquals("ONE LAKH", converterService.convertNumToWord("100000").trim());
+		
+	}
 	
 }
