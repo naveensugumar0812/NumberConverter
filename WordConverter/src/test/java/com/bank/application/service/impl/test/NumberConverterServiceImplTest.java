@@ -36,4 +36,9 @@ public class NumberConverterServiceImplTest {
 	public void testExceedMaxValue() {
 		converterService.convertNumToWord("1000000");
 	}
+	
+	@Test(expected=NumberFormatException.class)
+	public void testForAlphabet() {
+		converterService.convertNumToWord("asdasd");
+	}
 }
